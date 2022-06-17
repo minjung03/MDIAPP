@@ -14,7 +14,41 @@ namespace MDIAPP
     {
         public Form1()
         {
+
             InitializeComponent();
+            IsMdiContainer = true;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("내용");
+
+            DialogResult result;
+            do
+            {
+                result = MessageBox.Show("내용", "제목", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+            }
+            while (result == DialogResult.Retry);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CustomForm form = new CustomForm();
+            form.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CustomForm form = new CustomForm();
+            form.MdiParent = this;
+            form.Show();
         }
     }
+
 }
